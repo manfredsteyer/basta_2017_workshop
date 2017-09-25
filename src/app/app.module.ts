@@ -12,6 +12,9 @@ import { FlightService } from './flight-booking/flight-search/flight.service';
 import { CityPipe } from './shared/city.pipe';
 import { FlightBookingModule } from './flight-booking/flight-booking.module';
 import { CONTROL_MODULES } from './controls';
+import { ErrorComponent } from './error/error.component';
+import { RouterModule } from '@angular/router';
+import { APP_ROUTES } from './app.routes';
 
 
 
@@ -22,11 +25,13 @@ import { CONTROL_MODULES } from './controls';
     HttpClientModule,
     FormsModule,
     FlightBookingModule,
-    CONTROL_MODULES
+    CONTROL_MODULES,
+    RouterModule.forRoot(APP_ROUTES)
   ],
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    ErrorComponent
   ],
   providers: [
     // { provide: FlightService, useClass: FlightService }

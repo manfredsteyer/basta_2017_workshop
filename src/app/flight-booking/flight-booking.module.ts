@@ -6,20 +6,28 @@ import { FlightSearchComponent } from './flight-search/flight-search.component';
 import { FlightService } from "./flight-search/flight.service";
 import { CONTROL_MODULES } from '../controls';
 import { FlightCardComponent } from './flight-card/flight-card.component';
+import { PassengerSearchComponent } from './passenger-search/passenger-search.component';
+import { RouterModule } from '@angular/router';
+import { FLIGHT_BOOKING_ROUTES } from './flight-booking.routes';
+import { FlightEditComponent } from './flight-edit/flight-edit.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     SharedModule,
+    RouterModule.forChild(FLIGHT_BOOKING_ROUTES),
     CONTROL_MODULES
+
   ],
   providers: [
-    // FlightService
+    FlightService
   ],
   declarations: [
     FlightSearchComponent,
-    FlightCardComponent
+    FlightCardComponent,
+    PassengerSearchComponent,
+    FlightEditComponent
   ],
   exports: [
     FlightSearchComponent

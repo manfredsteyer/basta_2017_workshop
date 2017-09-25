@@ -3,6 +3,7 @@ import { Flight } from '../../entities/flight';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { MdSnackBar } from '@angular/material';
 import { FlightService } from "./flight.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'flight-search',
@@ -16,7 +17,7 @@ export class FlightSearchComponent implements OnInit {
   to: string;
   flights: Array<Flight> = [];
   selectedFlight: Flight;
-
+  // test ....
   basket: object = {
     "3": true,
     "5": true
@@ -26,11 +27,17 @@ export class FlightSearchComponent implements OnInit {
   constructor(
     private flightService: FlightService,
     private snackBar: MdSnackBar,
-    private http: HttpClient) {
+    private http: HttpClient,
+    private router: Router
+  ) {
     //this.http = http;
   }
 
   search(): void {
+
+    this.router.navigate(['.', { from: this.from, to: this.to }]);
+
+
     this.flightService
         .find(this.from, this.to)
         .subscribe(

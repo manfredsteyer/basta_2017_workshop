@@ -1,0 +1,34 @@
+<md-card>
+  <md-card-title>Flight Edit</md-card-title>
+  <md-card-content *ngIf="flight">
+
+    <div layout="row" layout-wrap>
+      <md-form-field flex="100">
+        <input name="id" [(ngModel)]="flight.id" mdTooltip="Id" mdInput placeholder="Id">
+      </md-form-field>
+
+      <md-input-container flex="100">
+        <input name="from" [(ngModel)]="flight.from" mdTooltip="from" mdInput placeholder="from">
+      </md-input-container>
+
+      <md-input-container flex="100">
+        <input name="to" [(ngModel)]="flight.to" mdTooltip="to" mdInput placeholder="to">
+      </md-input-container>
+
+      <md-input-container flex="100">
+        <input name="date" [(ngModel)]="flight.date" mdTooltip="date" mdInput placeholder="date">
+      </md-input-container>
+
+    </div>
+
+
+
+    <p>Id: {{id}}</p>
+    <p>ShowDetails: {{showDetails}}</p>
+
+
+  </md-card-content>
+  <md-card-actions>
+    <button md-button (click)="save()">Save</button>
+  </md-card-actions>
+</md-card>

@@ -10,5 +10,6 @@
   <md-card-actions>
     <button *ngIf="!selected" md-button (click)="select()">Select</button>
     <button *ngIf="selected" md-button (click)="deselect()">Remove</button>
+    <a md-button [routerLink]="['/flight-edit', item.id, {showDetails: true}]">Edit</a>
   </md-card-actions>
 </md-card>
