@@ -1,0 +1,14 @@
+
+<md-card style="margin:0px;"
+         [ngStyle]="{ 'background-color': (selected) ? 'orange' : 'white' }">
+  <md-card-title>{{item.from}} - {{item.to}}</md-card-title>
+  <md-card-content>
+    <p>Id: {{item.id}}</p>
+    <p>Date: {{item.date | date:'dd.MM.yyyy HH:mm'}}</p>
+    <p>Delayed: {{item.delayed}}</p>
+  </md-card-content>
+  <md-card-actions>
+    <button *ngIf="!selected" md-button (click)="select()">Select</button>
+    <button *ngIf="selected" md-button (click)="deselect()">Remove</button>
+  </md-card-actions>
+</md-card>

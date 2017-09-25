@@ -1,0 +1,84 @@
+<!-- Search Form -->
+<md-card>
+  <form>
+    <md-card-title>Search for Flights</md-card-title>
+    <md-card-content>
+
+      <div layout="row" layout-wrap>
+        <md-form-field flex="100">
+          <input name="from" [(ngModel)]="from" mdTooltip="Airport of departure" mdInput placeholder="from">
+        </md-form-field>
+
+        <md-input-container flex="100">
+          <input name="to" [(ngModel)]="to" mdTooltip="Airport of destination" mdInput placeholder="to">
+        </md-input-container>
+      </div>
+    </md-card-content>
+    <md-card-actions>
+      <button (click)="search()" [disabled]="!from || !to" md-raised-button color="primary">Search</button>
+    </md-card-actions>
+  </form>
+</md-card>
+
+
+
+<!-- Result Table -->
+<md-card *ngIf="flights.length > 0">
+  <div layout layout-fill>
+    <table td-data-table>
+      <thead>
+      <tr td-data-table-column-row>
+        <th td-data-table-column>
+          Id
+        </th>
+        <th td-data-table-column>
+          From
+        </th>
+        <th td-data-table-column>
+          To
+        </th>
+        <th td-data-table-column>
+          Date
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr [ngClass]="{ 'active': f === selectedFlight }" td-data-table-row *ngFor="let f of flights" (click)="select(f)">
+        <td td-data-table-cell >
+          {{f.id}}
+        </td>
+        <td td-data-table-cell>
+          {{f.from | city: 'short'}}
+        </td>
+        <td td-data-table-cell>
+          {{f.to | city: 'long'}}
+        </td>
+        <td td-data-table-cell>
+          {{f.date | date: 'dd.MM.yyyy HH:mm'}}
+        </td>
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</md-card>
+
+<div layout="row" layout-wrap>
+  <div style="padding:10px" flex-xs="100" flex-sm="50" flex-md="33" flex="25" *ngFor="let f of flights">
+
+
+  <flight-card
+      [item]="f"
+      [(selected)]="basket[f.id]">
+  </flight-card>
+
+    <!-- (selectedChange)="basket[f.id] = $event" -->
+
+  </div>
+</div>
+
+<md-card>
+  <md-card-content>
+    <pre>{{ basket | json }}</pre>
+  </md-card-content>
+</md-card>
