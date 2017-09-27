@@ -32,6 +32,7 @@ export class FlightEditComponent implements OnInit {
   }
 
   load(): void {
+
     this.flightService.findById(this.id).subscribe(
       flight => { this.flight = flight; },
       err => { this.snackBar.open('Fehler beim Laden', 'OK', {duration: 3000}); }
