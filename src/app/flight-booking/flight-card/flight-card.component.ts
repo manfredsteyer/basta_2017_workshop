@@ -17,7 +17,6 @@ export class FlightCardComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnInit() {
     console.debug('init', this.selected, this.item);
-    this.selectedChange.next(true);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
